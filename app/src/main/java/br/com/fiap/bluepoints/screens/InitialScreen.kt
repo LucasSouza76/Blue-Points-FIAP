@@ -91,7 +91,7 @@ fun InitialScreen(navController: NavController) {
                )
             }
             ElevatedButton(
-               onClick = { /*TODO*/ },
+               onClick = { navController.navigate("register_screen") },
                modifier = Modifier
                   .height(44.dp)
                   .fillMaxWidth(),

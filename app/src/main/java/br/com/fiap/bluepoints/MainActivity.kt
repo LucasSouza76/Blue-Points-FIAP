@@ -10,9 +10,11 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import br.com.fiap.bluepoints.screens.AddressMapScreen
 import br.com.fiap.bluepoints.ui.theme.BluePointsTheme
 import br.com.fiap.bluepoints.screens.InitialScreen
 import br.com.fiap.bluepoints.screens.LoginScreen
+import br.com.fiap.bluepoints.screens.RegisterScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +31,9 @@ class MainActivity : ComponentActivity() {
                          startDestination = "initial_screen"
                      ) {
                          composable(route = "initial_screen") { InitialScreen(navController)}
-                         composable(route = "login_screen") { LoginScreen()}
+                         composable(route = "login_screen") { LoginScreen(navController)}
+                         composable(route = "register_screen") { RegisterScreen(navController)}
+                         composable(route = "address_map") { AddressMapScreen() }
                      }
                 }
             }

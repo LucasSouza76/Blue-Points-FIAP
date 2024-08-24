@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Icon
@@ -31,7 +32,7 @@ import androidx.navigation.NavController
 import br.com.fiap.bluepoints.R
 
 @Composable
-fun LoginScreen( navController: NavController ) {
+fun RegisterScreen( navController: NavController ) {
    Surface(
       modifier = Modifier.fillMaxSize(),
       color = Color.White,
@@ -46,9 +47,12 @@ fun LoginScreen( navController: NavController ) {
                .align(Alignment.TopCenter)
          ) {
             Image(
-               painter = painterResource(id = R.drawable.login_img),
-               contentDescription ="img_login2",
-               modifier = Modifier.height(300.dp).padding(top = 30.dp)
+               painter = painterResource(id = R.drawable.register_img),
+               contentDescription ="img_register",
+               modifier = Modifier
+                  .height(250.dp)
+                  .width(250.dp)
+                  .padding(top = 30.dp)
             )
             Row(
                modifier = Modifier
@@ -57,7 +61,7 @@ fun LoginScreen( navController: NavController ) {
                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
                Text(
-                  text = "Entre com a sua conta",
+                  text = "Crie a sua Conta",
                   fontSize = 20.sp,
                   fontWeight = FontWeight.Medium,
                   color = Color(0xFF0339A6)
@@ -74,7 +78,14 @@ fun LoginScreen( navController: NavController ) {
             TextField(
                value = "",
                onValueChange = { /*TODO*/ },
-               label = { Text("Nome") },
+               label = { Text("Nome e Sobrenome") },
+               modifier = Modifier.fillMaxWidth(),
+               colors = OutlinedTextFieldDefaults.colors( unfocusedContainerColor = Color.Transparent ),
+            )
+            TextField(
+               value = "",
+               onValueChange = { /*TODO*/ },
+               label = { Text("Email") },
                modifier = Modifier.fillMaxWidth(),
                colors = OutlinedTextFieldDefaults.colors( unfocusedContainerColor = Color.Transparent ),
             )
@@ -92,25 +103,7 @@ fun LoginScreen( navController: NavController ) {
                   )
                },
                visualTransformation = PasswordVisualTransformation(),
-
-               )
-            Row(
-               horizontalArrangement = Arrangement.Center,
-               modifier = Modifier
-                  .fillMaxWidth()
-            ) {
-               Text(
-                  text = "Esqueceu a sua senha? ",
-                  fontSize = 16.sp,
-                  fontWeight = FontWeight.Medium,
-               )
-               Text(
-                  text = "Recuperar Senha",
-                  fontSize = 16.sp,
-                  fontWeight = FontWeight.Medium,
-                  color = colorResource(id = R.color.azul_primario)
-               )
-            }
+            )
          }
          Column(
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -128,7 +121,7 @@ fun LoginScreen( navController: NavController ) {
                colors = ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.azul_primario))
             ) {
                Text(
-                  text = "Login",
+                  text = "Cadastrar",
                   fontSize = 18.sp,
                   fontWeight = FontWeight.Medium,
                )
