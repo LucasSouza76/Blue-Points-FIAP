@@ -25,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import br.com.fiap.bluepoints.ui.theme.poppinsMedium
 
 @Composable
 fun InitialScreen(navController: NavController) {
@@ -48,11 +49,13 @@ fun InitialScreen(navController: NavController) {
                   text = "Blue",
                   fontSize = 45.sp,
                   fontWeight = FontWeight.Medium,
+                  fontFamily = poppinsMedium,
                   color = colorResource(id = R.color.azul_primario)
                )
                Text(
                   text = "Points",
                   fontSize = 45.sp,
+                  fontFamily = poppinsMedium,
                   fontWeight = FontWeight.Medium,
                   color = Color.Black
                )
@@ -87,6 +90,7 @@ fun InitialScreen(navController: NavController) {
                Text(
                   text = "Login",
                   fontSize = 18.sp,
+                  fontFamily = poppinsMedium,
                   fontWeight = FontWeight.Medium,
                )
             }
@@ -99,6 +103,7 @@ fun InitialScreen(navController: NavController) {
             ) {
                Text(
                   text = "Cadastre-se",
+                  fontFamily = poppinsMedium,
                   color = colorResource(id = R.color.azul_primario),
                   fontSize = 18.sp,
                   fontWeight = FontWeight.Medium,

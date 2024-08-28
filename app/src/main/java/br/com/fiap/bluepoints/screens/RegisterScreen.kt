@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import br.com.fiap.bluepoints.R
+import br.com.fiap.bluepoints.ui.theme.poppinsMedium
 
 @Composable
 fun RegisterScreen( navController: NavController ) {
@@ -64,6 +65,7 @@ fun RegisterScreen( navController: NavController ) {
                   text = "Crie a sua Conta",
                   fontSize = 20.sp,
                   fontWeight = FontWeight.Medium,
+                  fontFamily = poppinsMedium,
                   color = Color(0xFF0339A6)
                )
             }
@@ -78,21 +80,21 @@ fun RegisterScreen( navController: NavController ) {
             TextField(
                value = "",
                onValueChange = { /*TODO*/ },
-               label = { Text("Nome e Sobrenome") },
+               label = { Text("Nome e Sobrenome", fontFamily = poppinsMedium) },
                modifier = Modifier.fillMaxWidth(),
                colors = OutlinedTextFieldDefaults.colors( unfocusedContainerColor = Color.Transparent ),
             )
             TextField(
                value = "",
                onValueChange = { /*TODO*/ },
-               label = { Text("Email") },
+               label = { Text("Email", fontFamily = poppinsMedium) },
                modifier = Modifier.fillMaxWidth(),
                colors = OutlinedTextFieldDefaults.colors( unfocusedContainerColor = Color.Transparent ),
             )
             TextField(
                value = "",
                onValueChange = { /*TODO*/ },
-               label = { Text("Senha") },
+               label = { Text("Senha", fontFamily = poppinsMedium) },
                modifier = Modifier.fillMaxWidth(),
                colors = OutlinedTextFieldDefaults.colors( unfocusedContainerColor = Color.Transparent ),
                trailingIcon = {
@@ -124,6 +126,7 @@ fun RegisterScreen( navController: NavController ) {
                   text = "Cadastrar",
                   fontSize = 18.sp,
                   fontWeight = FontWeight.Medium,
+                  fontFamily = poppinsMedium,
                )
             }
          }

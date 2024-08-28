@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,11 +22,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import br.com.fiap.bluepoints.R
+import br.com.fiap.bluepoints.ui.theme.poppinsMedium
+import br.com.fiap.bluepoints.ui.theme.poppinsRegular
+import br.com.fiap.bluepoints.ui.theme.poppinsSemibold
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
@@ -46,19 +52,27 @@ fun AddressMapScreen() {
             Row(
                modifier = Modifier
                   .fillMaxWidth(),
-               horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-               Icon(
-                  painter = painterResource(id = R.drawable.arrow_back_icon),
-                  contentDescription = "location",
+               IconButton(
+                  onClick = { /*TODO*/ },
                   modifier = Modifier
-                     .size(20.dp)
-               )
+               ) {
+                  Icon(
+                     painter = painterResource(id = R.drawable.arrow_back_icon),
+                     contentDescription = "location",
+                     modifier = Modifier
+                        .size(25.dp)
+                  )
+               }
                Text(
                   text = "Rua Frei Caneca, 42",
+                  fontFamily = poppinsSemibold,
                   fontSize = 16.sp,
                   fontWeight = FontWeight.W600,
-                  color = Color(0xFF0339A6)
+                  color = Color(0xFF0339A6),
+                  modifier = Modifier
+                     .align(Alignment.CenterVertically)
+                     .padding(start = 50.dp)
                )
             }
             Image(
@@ -79,31 +93,38 @@ fun AddressMapScreen() {
                Icon(
                   painter = painterResource(id = R.drawable.location_icon),
                   contentDescription = "location",
+                  tint = colorResource(id = R.color.azul_primario),
                   modifier = Modifier
                      .size(20.dp)
                )
                Text(
                   text = "Rua Frei Caneca 42, São Paulo",
+                  fontFamily = poppinsSemibold,
                   fontSize = 14.sp,
                   fontWeight = FontWeight.W600,
                   color = Color(0xFF0339A6),
+                  modifier = Modifier
+                     .align(Alignment.CenterVertically)
+                     .padding(end = 40.dp)
                )
             }
          }
          Column(
-            verticalArrangement = Arrangement.spacedBy(25.dp),
+            verticalArrangement = Arrangement.spacedBy(15.dp),
             modifier = Modifier
                .align(Alignment.CenterStart)
-               .padding(top = 350.dp)
+               .padding(top = 320.dp)
                .fillMaxWidth()
          ) {
             Column(
-               verticalArrangement = Arrangement.spacedBy(15.dp)
+               verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                Text(
                   text = "Descrição:",
+                  fontFamily = poppinsMedium,
                   fontSize = 14.sp,
                   fontWeight = FontWeight.W500,
+                  style = TextStyle(textDecoration = TextDecoration.Underline)
                )
                Text(
                   text = "Dias e horários de funcionamento:\n" +
@@ -111,16 +132,19 @@ fun AddressMapScreen() {
                           "- Telefone: 11 4002-8922 \n" +
                           "- Email: bluepoints@bluepoints.com",
                   fontSize = 12.sp,
-                  fontWeight = FontWeight.W400
+                  fontWeight = FontWeight.W400,
+                  fontFamily = poppinsRegular,
                )
             }
             Column(
-               verticalArrangement = Arrangement.spacedBy(15.dp)
+               verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                Text(
                   text = "Materiais coletados:",
+                  fontFamily = poppinsMedium,
                   fontSize = 14.sp,
-                  fontWeight = FontWeight.W500
+                  fontWeight = FontWeight.W500,
+                  style = TextStyle(textDecoration = TextDecoration.Underline)
                )
                Text(
                   text =  "- Garrafas plásticas.\n" +
@@ -130,6 +154,7 @@ fun AddressMapScreen() {
                           "- Vasilhas metálicas para alimentos.\n" +
                           "- Panelas, talheres, etc.",
                   fontSize = 12.sp,
+                  fontFamily = poppinsRegular,
                   fontWeight = FontWeight.W400
                )
             }
@@ -156,7 +181,6 @@ fun AddressMapScreen() {
          }
       }
    }
-
 }
 
 

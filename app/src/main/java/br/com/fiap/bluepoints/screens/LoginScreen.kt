@@ -29,6 +29,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import br.com.fiap.bluepoints.R
+import br.com.fiap.bluepoints.ui.theme.poppinsMedium
 
 @Composable
 fun LoginScreen( navController: NavController ) {
@@ -60,6 +61,7 @@ fun LoginScreen( navController: NavController ) {
                   text = "Entre com a sua conta",
                   fontSize = 20.sp,
                   fontWeight = FontWeight.Medium,
+                  fontFamily = poppinsMedium,
                   color = Color(0xFF0339A6)
                )
             }
@@ -74,14 +76,14 @@ fun LoginScreen( navController: NavController ) {
             TextField(
                value = "",
                onValueChange = { /*TODO*/ },
-               label = { Text("Nome") },
+               label = { Text("Nome", fontFamily = poppinsMedium) },
                modifier = Modifier.fillMaxWidth(),
                colors = OutlinedTextFieldDefaults.colors( unfocusedContainerColor = Color.Transparent ),
             )
             TextField(
                value = "",
                onValueChange = { /*TODO*/ },
-               label = { Text("Senha") },
+               label = { Text("Senha", fontFamily = poppinsMedium) },
                modifier = Modifier.fillMaxWidth(),
                colors = OutlinedTextFieldDefaults.colors( unfocusedContainerColor = Color.Transparent ),
                trailingIcon = {
@@ -103,11 +105,13 @@ fun LoginScreen( navController: NavController ) {
                   text = "Esqueceu a sua senha? ",
                   fontSize = 16.sp,
                   fontWeight = FontWeight.Medium,
+                  fontFamily = poppinsMedium,
                )
                Text(
                   text = "Recuperar Senha",
                   fontSize = 16.sp,
                   fontWeight = FontWeight.Medium,
+                  fontFamily = poppinsMedium,
                   color = colorResource(id = R.color.azul_primario)
                )
             }
@@ -129,6 +133,7 @@ fun LoginScreen( navController: NavController ) {
             ) {
                Text(
                   text = "Login",
+                  fontFamily = poppinsMedium,
                   fontSize = 18.sp,
                   fontWeight = FontWeight.Medium,
                )

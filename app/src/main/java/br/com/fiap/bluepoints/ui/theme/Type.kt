@@ -10,26 +10,15 @@ import androidx.compose.ui.unit.sp
 import br.com.fiap.bluepoints.R
 
 
-val provider = GoogleFont.Provider(
-    providerAuthority = "com.google.android.gms.fonts",
-    providerPackage = "com.google.android.gms",
-    certificates = R.array.com_google_android_gms_fonts_certs
+val poppinsRegular = FontFamily(androidx.compose.ui.text.font.Font(R.font.poppins_regular))
+val poppinsMedium = FontFamily(androidx.compose.ui.text.font.Font(R.font.poppins_medium))
+val poppinsSemibold = FontFamily(androidx.compose.ui.text.font.Font(R.font.poppins_semibold))
 
-)
-
-val fontName = GoogleFont("Poppins")
-
-val fontFamily = FontFamily(
-    Font(
-        googleFont = fontName,
-        fontProvider = provider
-    )
-)
 // Set of Material typography styles to start with
 
 val Typography = Typography(
     bodyLarge = TextStyle(
-        fontFamily = fontFamily,
+        fontFamily = poppinsRegular,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,
