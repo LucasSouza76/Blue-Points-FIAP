@@ -18,6 +18,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -33,6 +35,15 @@ import br.com.fiap.bluepoints.ui.theme.poppinsMedium
 
 @Composable
 fun LoginScreen( navController: NavController ) {
+
+   val textName = remember {
+      mutableStateOf("")
+   }
+
+   val textPassword = remember {
+      mutableStateOf("")
+   }
+
    Surface(
       modifier = Modifier.fillMaxSize(),
       color = Color.White,
@@ -49,7 +60,9 @@ fun LoginScreen( navController: NavController ) {
             Image(
                painter = painterResource(id = R.drawable.login_img),
                contentDescription ="img_login2",
-               modifier = Modifier.height(300.dp).padding(top = 30.dp)
+               modifier = Modifier
+                  .height(300.dp)
+                  .padding(top = 30.dp)
             )
             Row(
                modifier = Modifier
@@ -74,15 +87,15 @@ fun LoginScreen( navController: NavController ) {
                .padding(top = 200.dp)
          ) {
             TextField(
-               value = "",
-               onValueChange = { /*TODO*/ },
+               value = textName.value,
+               onValueChange = { textName.value = it },
                label = { Text("Nome", fontFamily = poppinsMedium) },
                modifier = Modifier.fillMaxWidth(),
                colors = OutlinedTextFieldDefaults.colors( unfocusedContainerColor = Color.Transparent ),
             )
             TextField(
-               value = "",
-               onValueChange = { /*TODO*/ },
+               value = textPassword.value,
+               onValueChange = { textPassword.value = it },
                label = { Text("Senha", fontFamily = poppinsMedium) },
                modifier = Modifier.fillMaxWidth(),
                colors = OutlinedTextFieldDefaults.colors( unfocusedContainerColor = Color.Transparent ),

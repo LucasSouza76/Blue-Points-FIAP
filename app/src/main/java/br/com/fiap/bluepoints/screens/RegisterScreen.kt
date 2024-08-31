@@ -19,6 +19,8 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,6 +36,19 @@ import br.com.fiap.bluepoints.ui.theme.poppinsMedium
 
 @Composable
 fun RegisterScreen( navController: NavController ) {
+
+   val textName = remember {
+      mutableStateOf("")
+   }
+
+   val textEmail = remember {
+      mutableStateOf("")
+   }
+
+   val textPassword = remember {
+      mutableStateOf("")
+   }
+
    Surface(
       modifier = Modifier.fillMaxSize(),
       color = Color.White,
@@ -78,22 +93,22 @@ fun RegisterScreen( navController: NavController ) {
                .padding(top = 200.dp)
          ) {
             TextField(
-               value = "",
-               onValueChange = { /*TODO*/ },
+               value = textName.value,
+               onValueChange = { textName.value = it },
                label = { Text("Nome e Sobrenome", fontFamily = poppinsMedium) },
                modifier = Modifier.fillMaxWidth(),
                colors = OutlinedTextFieldDefaults.colors( unfocusedContainerColor = Color.Transparent ),
             )
             TextField(
-               value = "",
-               onValueChange = { /*TODO*/ },
+               value = textEmail.value,
+               onValueChange = { textEmail.value = it },
                label = { Text("Email", fontFamily = poppinsMedium) },
                modifier = Modifier.fillMaxWidth(),
                colors = OutlinedTextFieldDefaults.colors( unfocusedContainerColor = Color.Transparent ),
             )
             TextField(
-               value = "",
-               onValueChange = { /*TODO*/ },
+               value = textPassword.value,
+               onValueChange = { textPassword.value = it },
                label = { Text("Senha", fontFamily = poppinsMedium) },
                modifier = Modifier.fillMaxWidth(),
                colors = OutlinedTextFieldDefaults.colors( unfocusedContainerColor = Color.Transparent ),

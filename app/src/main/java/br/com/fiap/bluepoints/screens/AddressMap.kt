@@ -1,6 +1,5 @@
 package br.com.fiap.bluepoints.screens
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,17 +24,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.navigation.NavController
 import br.com.fiap.bluepoints.R
 import br.com.fiap.bluepoints.ui.theme.poppinsMedium
 import br.com.fiap.bluepoints.ui.theme.poppinsRegular
 import br.com.fiap.bluepoints.ui.theme.poppinsSemibold
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.MapView
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
-@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun AddressMapScreen() {
+fun AddressMapScreen(navController: NavController) {
+
    Surface(
       modifier = Modifier.fillMaxSize(),
       color = Color.White,
@@ -54,7 +58,7 @@ fun AddressMapScreen() {
                   .fillMaxWidth(),
             ) {
                IconButton(
-                  onClick = { /*TODO*/ },
+                  onClick = { navController.navigate("initial_screen") },
                   modifier = Modifier
                ) {
                   Icon(
@@ -75,39 +79,18 @@ fun AddressMapScreen() {
                      .padding(start = 50.dp)
                )
             }
-            Image(
-               painter = painterResource(id = R.drawable.map3_img),
-               contentDescription = "img_address_map",
-               alignment = Alignment.TopCenter,
-               modifier = Modifier
-                  .fillMaxWidth()
-                  .height(300.dp)
-                  .padding(top = 20.dp)
-            )
-            Row(
-               modifier = Modifier
-                  .fillMaxWidth()
-                  .height(20.dp),
-               horizontalArrangement = Arrangement.SpaceEvenly
-            ) {
-               Icon(
-                  painter = painterResource(id = R.drawable.location_icon),
-                  contentDescription = "location",
-                  tint = colorResource(id = R.color.azul_primario),
-                  modifier = Modifier
-                     .size(20.dp)
-               )
-               Text(
-                  text = "Rua Frei Caneca 42, São Paulo",
-                  fontFamily = poppinsSemibold,
-                  fontSize = 14.sp,
-                  fontWeight = FontWeight.W600,
-                  color = Color(0xFF0339A6),
-                  modifier = Modifier
-                     .align(Alignment.CenterVertically)
-                     .padding(end = 40.dp)
-               )
-            }
+            AndroidView(factory = { context ->
+               MapView(context).apply {
+                  onCreate(null)
+                  getMapAsync { googleMap ->
+                     val location = LatLng(-23.5542584, -46.6549876)
+                     googleMap.addMarker(MarkerOptions().position(location).title("Rua Frei Caneca, 42"))
+                     googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
+                  }
+               }
+            }, update = { mapView ->
+               mapView.onResume()
+            })
          }
          Column(
             verticalArrangement = Arrangement.spacedBy(15.dp),
@@ -165,7 +148,7 @@ fun AddressMapScreen() {
                .align(Alignment.BottomCenter)
          ) {
             ElevatedButton(
-               onClick = { /*TODO*/ },
+               onClick = { navController.navigate("initial_screen") },
                modifier = Modifier
                   .height(44.dp)
                   .padding(horizontal = 20.dp)
